@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 // import logo from './logo.svg';
-import './stylesheets/App.css';
+import './stylesheets/app.css';
 import Flat from './components/flat';
 
 class App extends Component {
@@ -26,6 +26,7 @@ class App extends Component {
             <Flat flat={flat} />
           </div>
         </div>
+        <div className="map" />
       </div>
     );
   }

@@ -1,5 +1,6 @@
 .flat {
-
+  flex-basis: calc(50% - 20px);
+  margin:10px;
 }
 
 .flat-picture {
@@ -8,6 +9,7 @@
   background-position:center;
 }
 
-.flat-title {
+.flat-title p {
   font-weight: bold;
+  margin: 5px 0;
 }
