@@ -2,6 +2,7 @@
   "name": "airbnb-clone",
   "version": "0.1.0",
   "private": false,
+
   "devDependencies": {
     "babel-eslint": "^10.1.0",
     "eslint": "^7.8.1",
