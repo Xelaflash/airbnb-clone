@@ -1,20 +1,34 @@
 import React, { Component } from 'react';
 // import logo from './logo.svg';
 import './stylesheets/app.css';
+import GoogleMapReact from 'google-map-react';
 import Flat from './components/flat';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      flats: [],
+    };
+  }
+
+  componentDidMount() {
+    fetch(
+      'https://raw.githubusercontent.com/lewagon/flats-boilerplate/master/flats.json'
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        // console.log(data);
+        this.setState({
+          flats: data,
+        });
+      });
+  }
+
   render() {
-    // TODO fetch some json
-    const flat = {
-      id: 145,
-      name: 'Charm at the Steps of the Sacre Coeur/Montmartre',
-      imageUrl:
-        'https://raw.githubusercontent.com/lewagon/flats-boilerplate/master/images/flat1.jpg',
-      price: 164,
-      priceCurrency: 'EUR',
-      lat: 48.884211,
-      lng: 2.34689,
+    const center = {
+      lat: 48.8566,
+      lng: 2.3522,
     };
 
     return (
@@ -22,11 +36,13 @@ class App extends Component {
         <div className="main">
           <div className="search" />
           <div className="flats">
-            <Flat flat={flat} />
-            <Flat flat={flat} />
+            {this.state.flats.map((flat) => (
+              <Flat flat={flat} />
+            ))}
           </div>
         </div>
         <div className="map" />
+        <GoogleMapReact center={center} defaultZoom={11} />
       </div>
     );
   }
