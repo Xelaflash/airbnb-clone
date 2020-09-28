@@ -36,13 +36,18 @@ class App extends Component {
         <div className="main">
           <div className="search" />
           <div className="flats">
-            {this.state.flats.map((flat) => (
-              <Flat flat={flat} />
+            {this.state.flats.map((flat, index) => (
+              <Flat flat={flat} key={index} />
             ))}
           </div>
         </div>
-        <div className="map" />
-        <GoogleMapReact center={center} defaultZoom={11} />
+        <div className="map">
+          <GoogleMapReact
+            bootstrapURLKeys={{ key: `${process.env.REACT_APP_MAP}` }}
+            center={center}
+            defaultZoom={11}
+          />
+        </div>
       </div>
     );
   }
